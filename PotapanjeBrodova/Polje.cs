@@ -12,7 +12,6 @@ namespace PotapanjeBrodova
             Redak = redak;
             Stupac = stupac;
             string a = string.Empty;
-
         }
 
         public readonly int Redak;
