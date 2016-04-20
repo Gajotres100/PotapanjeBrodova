@@ -11,7 +11,21 @@ namespace PotapanjeBrodova
         {
             Redak = redak;
             Stupac = stupac;
-            string a = string.Empty;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            if (obj.GetType() != GetType())
+                return false;
+            Polje p = (Polje)obj;
+            return (p.Redak == Redak) && (p.Stupac == Stupac);
+        }
+
+        public override int GetHashCode()
+        {
+            return Redak ^ (Stupac >> 16);
         }
 
         public readonly int Redak;
