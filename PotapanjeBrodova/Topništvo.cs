@@ -14,8 +14,11 @@ namespace PotapanjeBrodova
 
     public class Topništvo
     {
-        public Topništvo()
+        public Topništvo(int readka, int stupaca, int[] duljineBrodova)
         {
+            this.duljineBrodova = new List<int>(duljineBrodova);
+            this.duljineBrodova.Sort((d1, d2) => d2 - d1);
+            mreža = new Mreža(readka, stupaca);
             PromijeniTaktikuUNapipavanje();
         }
 
@@ -32,7 +35,8 @@ namespace PotapanjeBrodova
         private void PromijeniTaktikuUNapipavanje()
         {
             TrenutnaTaktika = TaktikaGađanja.Napipavanje;
-            pucać = new Napipač(mreža, duljinaBroda);
+            pucać = new Napipač(mreža, duljineBrodova[0]);
+
         }
 
         private void PromijeniTaktikuUOkruživanje()
@@ -52,5 +56,7 @@ namespace PotapanjeBrodova
         }
 
         IPucać pucać;
+        Mreža mreža;
+        List<int> duljineBrodova;
     }
 }
