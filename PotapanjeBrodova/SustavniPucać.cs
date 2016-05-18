@@ -19,10 +19,20 @@ namespace PotapanjeBrodova
         {
             Orjentacija o = DajOjentaciju();
             var lista = DajPoljeNastavku(o);
-            if (lista.Count() == 1) return lista.First().First(); ;
-            int index = slučajni.Next(lista.Count());
-            return lista.ElementAt(index).First();
+            if (lista.Count() == 1)
+            {
+                zadnjeGađano = lista.First().First();               
+            }
+            else
+            {
+                int index = slučajni.Next(lista.Count());
+                zadnjeGađano = lista.ElementAt(index).First();
+            }
+
+            return zadnjeGađano;
         }
+
+        private Polje zadnjeGađano;
 
         private Orjentacija DajOjentaciju()
         {
@@ -68,8 +78,9 @@ namespace PotapanjeBrodova
 
         List<Polje> pogođenaPolja;
         Mreža mreža;
-
         Random slučajni = new Random();
+
+        
 
 
         public void EvidentirajRezultat(RezultatGađanja rezultat)
