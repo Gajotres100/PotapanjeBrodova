@@ -85,12 +85,15 @@ namespace PotapanjeBrodova
 
         public void EvidentirajRezultat(RezultatGađanja rezultat)
         {
-            throw new NotImplementedException();
+            if (rezultat == RezultatGađanja.Promašaj)
+                return;
+            pogođenaPolja.Add(zadnjeGađano);
+            pogođenaPolja.Sort((a, b) => a.Redak - b.Redak + a.Stupac - b.Stupac);
         }
 
         public IEnumerable<Polje> PogođenaPolja
         {
-            get { throw new NotImplementedException(); }
+            get { return pogođenaPolja; }
         }
     }
 }
