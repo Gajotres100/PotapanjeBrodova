@@ -85,5 +85,16 @@ namespace PotapanjeBrodova
 
             return kadidati;
         }
+
+
+        public void EvidentirajRezultat(RezultatGađanja rezultat)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Polje> PogođenaPolja
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

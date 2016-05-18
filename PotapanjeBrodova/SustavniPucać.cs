@@ -70,5 +70,16 @@ namespace PotapanjeBrodova
         Mreža mreža;
 
         Random slučajni = new Random();
+
+
+        public void EvidentirajRezultat(RezultatGađanja rezultat)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Polje> PogođenaPolja
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }
