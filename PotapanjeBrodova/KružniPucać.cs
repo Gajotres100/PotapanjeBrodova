@@ -7,35 +7,33 @@ namespace PotapanjeBrodova
 {
     public class KružniPucać : IPucać
     {
-        public KružniPucać(Polje prvoPogođeno, Mreža m)
+        public KružniPucać(Polje prvoPogođeno, Mreža mreža)
         {
-            this.PrvoPogođeno = prvoPogođeno;
-            this.mreža = m;
+            this.prvoPogođeno = prvoPogođeno;
+            this.mreža = mreža;
         }
+
         public Polje UputiPucanj()
         {
-            int redak = PrvoPogođeno.Redak;
-            int stupac = PrvoPogođeno.Stupac;
+            int redak = prvoPogođeno.Redak;
+            int stupac = prvoPogođeno.Stupac;
 
             List<IEnumerable<Polje>> kandidati = new List<IEnumerable<Polje>>();
-
             foreach (Smjer smjer in Enum.GetValues(typeof(Smjer)))
-                mreža.DajPoljaUZadanomSmjeru(redak, stupac, smjer);
-            
+            {
+                kandidati.Add(mreža.DajPoljaUZadanomSmjeru(redak, stupac, smjer));
+            }
             kandidati.Sort((lista1, lista2) => lista2.Count() - lista1.Count());
             var grupe = kandidati.GroupBy(lista => lista.Count());
 
             var najdulji = grupe.First();
-
-            if(najdulji.Count() == 0)
+            if (najdulji.Count() == 1)
                 return najdulji.First().First();
-
-            int indeks = slučajni.Next(0, najdulji.Count());
-
-            return najdulji.ElementAt(indeks).First();            
+            int indeks = slučajni.Next(najdulji.Count());
+            return najdulji.ElementAt(indeks).First();
         }
 
-        Polje PrvoPogođeno;
+        Polje prvoPogođeno;
         Mreža mreža;
         Random slučajni = new Random();
 
