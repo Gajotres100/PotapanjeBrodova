@@ -27,12 +27,12 @@ namespace UnitTests
         //}
 
         [TestMethod]
-        public void Napipač_ListaPpoljaZaVertilkalniBrodDuljineCetriMoraSadržavati15Polja()
+        public void Napipač_ListaPoljaZaVertikalniBrodDuljine4MoraSadržavati16Polja()
         {
             Mreža m = new Mreža(5, 2);
-            int duljinaBroda = 4;
+            const int duljinaBroda = 4;
             Napipač n = new Napipač(m, duljinaBroda);
-            Assert.AreEqual(15, n.DajKandidateZaVertikalniBrod().Count());
+            Assert.AreEqual(16, n.DajKandidateZaVertikalniBrod().Count());
         }
     }
 }
